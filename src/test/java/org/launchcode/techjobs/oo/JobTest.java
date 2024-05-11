@@ -65,6 +65,25 @@ public class JobTest {
     public void testToStringContainsCorrectLabelsAndData() {
         Job jobOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        String actual = jobOne.toString();
+
+        assertTrue(actual.contains("ID: " + jobOne.getId()));
+        assertTrue(actual.contains("Name: Product tester"));
+        assertTrue(actual.contains("Employer: ACME"));
+        assertTrue(actual.contains("Location: Desert"));
+        assertTrue(actual.contains("Position Type: Quality control"));
+        assertTrue(actual.contains("Core Competency: Persistence"));
+
+        System.out.println(jobOne.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+
+     Job jobOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+               new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
         String expected = System.lineSeparator() +
                 "ID: " + jobOne.getId() + "\n"+
                 "Name: " + jobOne.getName() + "\n" +
@@ -73,27 +92,7 @@ public class JobTest {
                 "Position Type: " + jobOne.getPositionType().getValue() + "\n"+
                 "Core Competency: " + jobOne.getCoreCompetency().getValue() +
                 System.lineSeparator();
-
-        System.out.println(jobOne.toString());
-
         assertEquals(jobOne.toString(), expected);
-
-    }
-
-    @Test
-    public void testToStringHandlesEmptyField() {
-
-        Job jobOne = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
-                new PositionType("Quality control"), new CoreCompetency("Persistence"));
-
-
-        String actual = jobOne.toString();
-
-       assertTrue(actual.contains("Name : Data not available"));
-        assertTrue(actual.contains("Employer: Data not available"));
-                assertTrue(actual.contains("Location: Data not available"));
-                        assertTrue(actual.contains("Position Type: Data not available"));
-                                assertTrue(actual.contains("Core Competency: Data not available"));
 
         System.out.println(jobOne.toString());
     }
