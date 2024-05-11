@@ -42,27 +42,32 @@ public class Job {
 
     @Override
     public String toString() {
-        // Start with a blank line to separate from previous text (if any)
 
-        String result = System.lineSeparator();
-        // Append ID field label and value followed by a new line
-        result += "ID: " + this.getId() + System.lineSeparator();
-        // Append Name field label and value (or "Data not available" if empty) followed by a new line
-        result += "Name: " + (this.getName().isEmpty() ? "Data not available" : this.getName()) + System.lineSeparator();
-        // Append Employer field label and value (or "Data not available" if empty) followed by a new line
-        result += "Employer: " + (this.getEmployer().getValue().isEmpty() ? "Data not available" : this.getEmployer().getValue()) + System.lineSeparator();
-        // Append Location field label and value (or "Data not available" if empty) followed by a new line
-        result += "Location: " + (this.getLocation().getValue().isEmpty() ? "Data not available" : this.getLocation().getValue()) + System.lineSeparator();
-        // Append Position Type field label and value (or "Data not available" if empty) followed by a new line
-        result += "Position Type: " + (this.getPositionType().getValue().isEmpty() ? "Data not available" : this.getPositionType().getValue()) + System.lineSeparator();
-        // Append Core Competency field label and value (or "Data not available" if empty) followed by a new line
-        result += "Core Competency: " + (this.getCoreCompetency().getValue().isEmpty() ? "Data not available" : this.getCoreCompetency().getValue()) + System.lineSeparator();
-        // Add a blank line at the end to separate from following text (if any)
-        // result += System.lineSeparator();
-        return result;
+        if(getName().isEmpty()){
+            name = "Data not available";
+        };
+        if(getEmployer().toString().isEmpty()){
+            employer.setValue("Data not available");
+        };
+        if(getLocation().toString().isEmpty()){
+            location.setValue("Data not available");
+        };
+        if(getPositionType().toString().isEmpty()){
+            positionType.setValue("Data not available");
+        }
+        if(getCoreCompetency().toString().isEmpty()){
+            coreCompetency.setValue("Data not available");
+        }
+
+        return System.lineSeparator() +
+                "ID: " + id + "\n"+
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n"+
+                "Core Competency: " + coreCompetency +
+                System.lineSeparator();
     }
-
-
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
