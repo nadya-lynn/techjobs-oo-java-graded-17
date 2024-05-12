@@ -40,6 +40,7 @@ public class TestTaskFive extends AbstractTest {
         String lastChar = String.valueOf(job.toString().charAt(job.toString().length()-1));
         assertEquals(firstChar, lineSeparator());
         assertEquals(lastChar, lineSeparator());
+        System.out.println(job.toString());
     }
 
     @Test
@@ -59,6 +60,7 @@ public class TestTaskFive extends AbstractTest {
         Job job = createJob("Web Developer", "LaunchCode", "StL", "Back-end developer", "Java");
         String jobString = getJobString(job);
         assertEquals(jobString, job.toString());
+        System.out.println(job.toString());
     }
 
     @Test
